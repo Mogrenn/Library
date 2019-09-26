@@ -12,9 +12,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import javaDB.javaDB;
+
 public class frame extends JFrame {
 	
 	private Random rand = new Random();
+	
 	
 	public frame() {
 		

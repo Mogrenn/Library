@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/brandon.mogren/eclipse-workspace/Library/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brandon.mogren/eclipse-workspace/Library/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/javaDB"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
