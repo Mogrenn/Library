@@ -165,7 +165,7 @@ public class frame extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 
 					Object[][] temp;
-					StringBuilder tempS= new StringBuilder();
+					
 					String SQL = "select *from bok where Media_ID=" + txt.getText();
 
 					temp = conn.getData(SQL);
@@ -184,10 +184,9 @@ public class frame extends JFrame {
 
 						temp = conn.getData(SQL);
 						if (temp.length > 0) {
-							SQL = "DELETE FROM dvd where Media_ID=" + txt.getText();
-							conn.sendData(SQL);
-							SQL = "delete from media where ID=" + txt.getText();
-							conn.sendData(SQL);
+							SQL = "select media.title, concat(forfattare.fnamn, \" \", forfattare.enamn) as name, dvd.regissor from media inner join dvd on media.ID=Media_ID inner join forfattare on forfattare.Media_ID=media.ID where media.ID=" + txt.getText();
+							temp = conn.getData(SQL);
+							JOptionPane.showMessageDialog(null, "Dvd title: "+temp[0][0]+", Regisserad av "+temp[0][2]+", skriven av "+temp[0][1]);
 						} else {
 
 							SQL = "select *from ljudbok where Media_ID=" + txt.getText();
