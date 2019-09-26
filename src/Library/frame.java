@@ -193,11 +193,11 @@ public class frame extends JFrame {
 
 							temp = conn.getData(SQL);
 							if (temp.length > 0) {
-								SQL = "DELETE FROM ljudbok where Media_ID=" + txt.getText();
-								conn.sendData(SQL);
+								SQL = "select media.title, concat(forfattare.fnamn,\" \",forfattare.enamn) as name, ljudbok.upplasare from media inner join forfattare on media.ID=forfattare.media_ID inner join ljudbok on media.ID=ljudbok.Media_ID where media.ID=" + txt.getText();
+								temp = conn.getData(SQL);
 								
-								SQL = "delete from media where ID=" + txt.getText();
-								conn.sendData(SQL);
+								JOptionPane.showMessageDialog(null, "Ljudbok title: "+temp[0][0]+" Skriven av "+temp[0][1]+" Inläst av "+temp[0][2]);
+
 							}
 
 						}
@@ -206,8 +206,9 @@ public class frame extends JFrame {
 				}
 
 			});
-			
 			break;
+			
+		
 
 		}
 
