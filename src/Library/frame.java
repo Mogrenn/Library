@@ -173,10 +173,10 @@ public class frame extends JFrame {
 					if (temp.length > 0) {
 						
 						
-						SQL = "select title from media where ID=" + txt.getText();
+						SQL = "select title, concat(forfattare.fnamn, \" \",forfattare.enamn) as name from media inner join forfattare on media.ID=forfattare.media_ID where media.ID=" + txt.getText();
 						temp = conn.getData(SQL);
 						
-						JOptionPane.showMessageDialog(null, "Bok title: "+temp[0][0]);
+						JOptionPane.showMessageDialog(null, "Bok title: "+temp[0][0]+" skriven av "+temp[0][1]);
 						
 					} else {
 
