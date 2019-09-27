@@ -58,21 +58,26 @@ public class lana extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				String psw = JOptionPane.showInputDialog("Skriv in lösenord");
-				
-				if (psw.equals(password)) {
+				String stmt = "select *from utlanad where media_ID=" + txt.getText();
+				Object[][] temp = conn.getData(stmt);
 
-					int lararID = larare.getSelectedIndex() + 1;
-					int elevID = elev.getSelectedIndex() + 1;
-					String mediaID = txt.getText();
+				if (temp.length < 0) {
+					String psw = JOptionPane.showInputDialog("Skriv in lösenord");
+					if (psw.equals(password)) {
 
-					String stmt = "insert into utlanad(larar_ID, elev_ID,media_ID,datum) VALUES(" + lararID + ","
-							+ elevID + ",\"" + mediaID + " \", CURDATE());";
-					conn.sendData(stmt);
-				}else {
-					JOptionPane.showMessageDialog(null, "Prova igen");
+						int lararID = larare.getSelectedIndex() + 1;
+						int elevID = elev.getSelectedIndex() + 1;
+						String mediaID = txt.getText();
+
+						stmt = "insert into utlanad(larar_ID, elev_ID,media_ID,datum) VALUES(" + lararID + "," + elevID
+								+ ",\"" + mediaID + " \", CURDATE());";
+						conn.sendData(stmt);
+					} else {
+						JOptionPane.showMessageDialog(null, "Prova igen");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Redan Bokad");
 				}
-
 			}
 
 		});
