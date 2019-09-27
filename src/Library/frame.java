@@ -22,13 +22,14 @@ public class frame extends JFrame {
 	private Random rand = new Random();
 	private SQL conn = new SQL();
 	private JTextField txt;
+	private JFrame frame;
 
 	public frame() {
 
 		this.setPreferredSize(new Dimension(600, 600));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new GridLayout(2, 1));
-
+		frame = this;
 		JPanel upperContainer = new JPanel(new GridLayout(2, 1));
 
 		txt = new JTextField(20);
@@ -54,7 +55,7 @@ public class frame extends JFrame {
 		JButton bokaButton = new JButton("Boka");
 		bokaButton.setPreferredSize(new Dimension(200, 55));
 
-		leftUpperInnerContainer.add(lanButton);
+		leftUpperInnerContainer.add(createButton("Låna"));
 		leftUpperInnerContainer.add(bokaButton);
 
 		upperInnerContainer.add(leftUpperInnerContainer);
@@ -63,11 +64,11 @@ public class frame extends JFrame {
 		rightUpperInnerContainer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		JButton histButton = new JButton("Historik");
 		histButton.setPreferredSize(new Dimension(200, 55));
-		JButton lagerButton = new JButton("Lager");
-		lagerButton.setPreferredSize(new Dimension(200, 55));
+		/*JButton lagerButton = new JButton("Lager");
+		lagerButton.setPreferredSize(new Dimension(200, 55));*/
 
 		rightUpperInnerContainer.add(histButton);
-		rightUpperInnerContainer.add(lagerButton);
+		rightUpperInnerContainer.add(createButton("Lager"));
 
 		upperInnerContainer.add(rightUpperInnerContainer);
 		upperContainer.add(upperInnerContainer);
@@ -208,7 +209,29 @@ public class frame extends JFrame {
 			});
 			break;
 			
+		case "Lager":
+				Button.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						new storage(frame);
+						
+					}
+					
+				});
+			break;
 		
+		case "Låna":
+			Button.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					new lana(frame);
+					
+				}
+				
+			});
+		break;
 
 		}
 
