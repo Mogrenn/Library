@@ -73,7 +73,7 @@ public class lana extends JFrame {
 								+ ",\"" + mediaID + " \", CURDATE());";
 						conn.sendData(stmt);
 					} else {
-						JOptionPane.showMessageDialog(null, "Prova igen");
+						JOptionPane.showMessageDialog(null, "Fel lösenord, prova igen");
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Redan Bokad");
